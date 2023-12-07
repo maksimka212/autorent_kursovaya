@@ -2,7 +2,7 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
 <head>
 
    
@@ -40,10 +40,10 @@
 
 <div id="cssmenu" >
 	<ul>
-	  <li><a href="index.html"><span>Autorent</span></a></li>
-	   <li><a href="single.html"><span>About</span></a></li>
-	   <li class="last"><a href="contact.html"><span>Contact</span></a></li>
-       <li><a href="login.html"><span>Login</span></a></li>
+	  <li><a href="index.php"><span>Autorent</span></a></li>
+	   <li><a href="single.php"><span>About</span></a></li>
+	   <li class="last"><a href="contact.php"><span>Contact</span></a></li>
+       <li><a href="login.php"><span>Login</span></a></li>
 	</ul>
 </div>
 <header id="header">
@@ -86,4 +86,50 @@
         
 	</div>
 </header>
+<?php
+  session_start();
+  include('config.php');
+  if (isset($_POST['register'])) {
+    $username = $_POST['username'];
+    $phone = $_POST['phone'];
+    $email = $_POST['register-mail'];
+    $password = $_POST['register-password'];
+    $passworddouble = $_POST['register-password-double'];
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    $query = $connection->prepare("SELECT email, phone FROM users WHERE email=:email OR phone=:phone");
+    $query->bindParam(":email", $email, PDO::PARAM_STR);
+    $query->bindParam(":phone", $phone, PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    if ($result['email'] == $email) {
+      echo "<script>sweet_true('error','такая почта уже зарегистрирована!');</script>";
+    
+    } else if ($result['phone'] == $phone) {
+      echo "<script>sweet_true('error','Пользователь с таким телефоном уже есть!');console.log('1');</script>";
+    } else {
+      $query = $connection->prepare("INSERT INTO users(username,password,email,phone) VALUES (:username,:password_hash,:email,:phone)");
+      $query->bindParam(":phone", $phone, PDO::PARAM_STR);
+      $query->bindParam(":username", $username, PDO::PARAM_STR);
+      $query->bindParam(":password_hash", $password_hash, PDO::PARAM_STR);
+      $query->bindParam(":email", $email, PDO::PARAM_STR);
+      $result = $query->execute();
+      if ($result) {
+        echo "<script>sweet_true('sucess','Регистрация прошла успешно!');</script>";
+        $query = $connection->prepare("SELECT * FROM users WHERE email=:email");
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['user_id'] = $result['id_user'];
+        $_SESSION['username'] = $result['username'];
+        $_SESSION['accountlvl'] = $result['accountlvl'];
+        $_SESSION['phone'] = $result['phone'];
+        $_SESSION['email'] = $result['email'];
+        $_SESSION['timeonline_users'] = $result['timeonline_users'];
+        echo '<script>window.location = "index.php";</script>';
+      } else {
+        echo '<p class="error">Неверные данные!</p>';
+      }
+    }
+  }
+  ?>
 </body>

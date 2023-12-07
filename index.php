@@ -36,10 +36,10 @@
 
 <div id="cssmenu" >
 	<ul>
-	  <li><a href="index.html"><span>Autorent</span></a></li>
-	   <li><a href="single.html"><span>About</span></a></li>
-	   <li class="last"><a href="contact.html"><span>Contact</span></a></li>
-	   <li><a href="login.html"><span>Login</span></a></li>
+	  <li><a href="index.php"><span>Autorent</span></a></li>
+	   <li><a href="single.php"><span>About</span></a></li>
+	   <li class="last"><a href="contact.php"><span>Contact</span></a></li>
+	   <li><a href="login.php"><span>Login</span></a></li>
 	</ul>
 </div>
 <header id="header">
@@ -393,9 +393,8 @@
 			<li><a href="#">Team</a></li>
 			<li><a href="#">Contact</a></li>
 		</ul>
-		<p>©2021 Online Tutorials | All Rights Reserved</p>
+		<p>©2023 AutoRent | All Rights Reserved</p>
 	</footer>
-	//Готовые иконки из библиотеки ionicons
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 	

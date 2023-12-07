@@ -36,10 +36,10 @@
 
 <div id="cssmenu" >
 	<ul>
-	   <li><a href="index.html"><span>Autorent</span></a></li>
-	   <li><a href="single.html"><span>About</span></a></li>
-	   <li class="active"><a href="contact.html"><span>Contact</span></a></li>
-	  <li><a href="login.html"><span>Login</span></a></li>
+	   <li><a href="index.php"><span>Autorent</span></a></li>
+	   <li><a href="single.php"><span>About</span></a></li>
+	   <li class="active"><a href="contact.php"><span>Contact</span></a></li>
+	  <li><a href="login.php"><span>Login</span></a></li>
 	</ul>
 </div>
 <header id="header">
@@ -72,8 +72,8 @@
 			<div class="row">
 				<div class="crumbs">
 					<ul>
-						<li><a href="index.html">Назад</a></li>
-						<li><a href="single.html">О наст</a></li>
+						<li><a href="index.php">Назад</a></li>
+						<li><a href="single.php">О нас</a></li>
 					</ul>
 				</div>
 				<div id="main-content">
@@ -157,4 +157,25 @@
 	<script type="text/javascript" src="js/form-scripts.js"></script>
 	
 </div>
+<footer>
+		<div class="waves">
+			<div class="wave" id="wave1"></div>
+		</div>
+		<ul class="social">
+			<li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+			<li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+			<li><a href="#"><ion-icon name="logo-linkedin"><ion-icon></a></li>
+			<li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+		</ul>
+		<ul class="menu">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Team</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		<p>©2023 AutoRent | All Rights Reserved</p>
+	</footer>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body></html>
