@@ -1,3 +1,6 @@
+<?php
+	require_once ('config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -150,7 +153,7 @@
 		
 		
 		
-		<section class="content-box box-4">
+<section class="content-box box-4">
 			<div class="zerogrid">
 				<div class="row wrap-box">
 					<div class="header">
@@ -158,166 +161,52 @@
 					</div>
 <!-- Сетка карточек товаров -->
 <div class="cards">
-	<div class="card">
-		<!-- Верхняя часть -->
-		<div class="card__top">
-		  <!-- Изображение-ссылка товара -->
-		  <a href="#" class="card__image">
-			<img
-			  src="images/auto.png"
-			  alt="Марка, модель"
-			/>
-		  </a>
-		  <!-- Скидка на товар -->
-		  <div class="card__label">-10%</div>
-		</div>
-		<!-- Нижняя часть -->
-		<div class="card__bottom">
-		  <!-- Цены на товар (с учетом скидки и без)-->
-		  <div class="card__prices">
-			<div class="card__price card__price--discount">135 000</div>
-			<div class="card__price card__price--common">150 000</div>
-		  </div>
-		  <!-- Ссылка-название товара -->
-		  <a href="#" class="card__title">
-			Хар-ки
-		  </a>
-		  <!-- Кнопка добавить в корзину -->
-		  <button class="card__add">Арендовать</button>
-		</div>
-	  </div>
-	<div class="card">
-		<div class="card">
-			<!-- Верхняя часть -->
-			<div class="card__top">
-			  <!-- Изображение-ссылка товара -->
-			  <a href="#" class="card__image">
-				<img
-				src="images/auto.png"
-				alt="Марка, модель"
-				/>
-			  </a>
-			  <!-- Скидка на товар -->
-			  <div class="card__label">-10%</div>
+	<?php
+		$cards = $connection->prepare('SELECT * FROM autopark');
+		$cards->execute();
+		$cards = $cards->fetchAll(PDO::FETCH_ASSOC);
+
+		for ($i=0; $i < count($cards); $i++) { 
+			echo '
+			<div class="card">
+			<span class="class_auto">'. $cards[$i]['class'] .'</span>
+				<!-- Верхняя часть -->
+				<div class="card__top">
+				<!-- Изображение-ссылка товара -->
+				<a href="#" class="card__image">
+					<img
+					src="'. $cards[$i]['image'] .'"
+					alt="Марка, модель"
+					/>
+				</a>
+				<!-- Скидка на товар -->
+				<div class="card__label">'. $cards[$i]['rating'] .'</div>
+				</div>
+				<!-- Нижняя часть -->
+				<div class="card__bottom">
+				<!-- Цены на товар (с учетом скидки и без)-->
+				<div class="card__prices">
+					<div class="card__price card__price--common">&ensp;'. $cards[$i]['cena'] .'</div>
+				</div>
+				<!-- Ссылка-название товара -->
+				<span class="card__title">Характеристики</span>
+				 	'. $cards[$i]['brend'] .'
+					'. $cards[$i]['name'] .'<br>
+					'. $cards[$i]['fuel'] .'<br>
+					'. $cards[$i]['transmission'] .'<br>
+					'. $cards[$i]['kuzov'] .'<br>
+					'. $cards[$i]['engine'] .'<br>
+					'. $cards[$i]['color'] .'<br>
+					<br>
+				</a>
+				<!-- Кнопка добавить в корзину -->
+				<button class="card__add" id_card="'. $cards[$i]['id_auto'] .'">Арендовать</button>
+				</div>
 			</div>
-			<!-- Нижняя часть -->
-			<div class="card__bottom">
-			  <!-- Цены на товар (с учетом скидки и без)-->
-			  <div class="card__prices">
-				<div class="card__price card__price--discount">135 000</div>
-				<div class="card__price card__price--common">150 000</div>
-			  </div>
-			  <!-- Ссылка-название товара -->
-			  <a href="#" class="card__title">
-				Хар-ки
-			  </a>
-			  <!-- Кнопка добавить в корзину -->
-			  <button class="card__add">Арендовать</button>
-			</div>
-		  </div>
-	</div>
-	<div class="card">
-		<div class="card">
-			<!-- Верхняя часть -->
-			<div class="card__top">
-			  <!-- Изображение-ссылка товара -->
-			  <a href="#" class="card__image">
-				<img
-				src="images/auto.png"
-				alt="Марка, модель"
-				/>
-			  </a>
-			  <!-- Скидка на товар -->
-			  <div class="card__label">-10%</div>
-			</div>
-			<!-- Нижняя часть -->
-			<div class="card__bottom">
-			  <!-- Цены на товар (с учетом скидки и без)-->
-			  <div class="card__prices">
-				<div class="card__price card__price--discount">135 000</div>
-				<div class="card__price card__price--common">150 000</div>
-			  </div>
-			  <!-- Ссылка-название товара -->
-			  <a href="#" class="card__title">
-				Хар-ки
-			  </a>
-			  <!-- Кнопка добавить в корзину -->
-			  <button class="card__add">Арендовать</button>
-			</div>
-		  </div>
-	</div>
-	<div class="card">
-		<div class="card">
-			<!-- Верхняя часть -->
-			<div class="card__top">
-			  <!-- Изображение-ссылка товара -->
-			  <a href="#" class="card__image">
-				<img
-				  src="images/auto.png"
-				  alt="Марка, модель"
-				/>
-			  </a>
-			  <!-- Скидка на товар -->
-			  <div class="card__label">-10%</div>
-			</div>
-			<!-- Нижняя часть -->
-			<div class="card__bottom">
-			  <!-- Цены на товар (с учетом скидки и без)-->
-			  <div class="card__prices">
-				<div class="card__price card__price--discount">135 000</div>
-				<div class="card__price card__price--common">150 000</div>
-			  </div>
-			  <!-- Ссылка-название товара -->
-			  <a href="#" class="card__title">
-				Хар-ки
-			  </a>
-			  <!-- Кнопка добавить в корзину -->
-			  <button class="card__add">Арендовать</button>
-			</div>
-		  </div>
-	</div>
-	<div class="card">
-		<div class="card">
-			<!-- Верхняя часть -->
-			<div class="card__top">
-			  <!-- Изображение-ссылка товара -->
-			  <a href="#" class="card__image">
-				<img
-				src="images/auto.png"
-				alt="Марка, модель"
-				/>
-			  </a>
-			  <!-- Скидка на товар -->
-			  <div class="card__label">-10%</div>
-			</div>
-			<!-- Нижняя часть -->
-			<div class="card__bottom">
-			  <!-- Цены на товар (с учетом скидки и без)-->
-			  <div class="card__prices">
-				<div class="card__price card__price--discount">135 000</div>
-				<div class="card__price card__price--common">150 000</div>
-			  </div>
-			  <!-- Ссылка-название товара -->
-			  <a href="#" class="card__title">
-				Хар-ки
-			  </a>
-			  <!-- Кнопка добавить в корзину -->
-			  <button class="card__add">Арендовать</button>
-			</div>
-		  </div>
-	</div>
-	<div class="card">
-	  <!-- Карточка товара .. -->
-	</div>
-	<div class="card">
-	  <!-- Карточка товара .. -->
-	</div>
-	<div class="card">
-	  <!-- Карточка товара .. -->
-	</div>
-	<div class="card">
-	  <!-- Карточка товара .. -->
-	</div>
+			';
+		}
+	?>
+
   </div>
 				</div>
 			</div>
