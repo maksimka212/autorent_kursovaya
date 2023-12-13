@@ -17,11 +17,12 @@
 	
 	
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-  
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+  	<link rel="stylesheet" href="css/zerogridlist.css">
+	  <link rel="stylesheet" href="css/stylelist.css">
+	  <link rel="stylesheet" href="css/menulist.css">
+	  <link rel="stylesheet" href="css/loginstyle.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
 	
 	
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -52,9 +53,8 @@
     $result = $query->fetch(PDO::FETCH_ASSOC);
     if ($query->rowCount() > 0) {
       echo "<script>sweet_true('error','такая почта уже зарегистрирована!');</script>";
-    
     } if ($query->rowCount() == 0) {
-      $query = $connection->prepare("INSERT INTO users(name,surname,otchestvo,passport,vodudost,password,email) VALUES (:name,:surname,:otchestvo,:passport,:vodudost,:password_hash,:email)");
+      $query = $connection->prepare("INSERT INTO users(email,name,surname,otchestvo,passport,vodudost,password) VALUES (:email,:name,:surname,:otchestvo,:passport,:vodudost,:password_hash)");
       $query->bindParam(":name", $name, PDO::PARAM_STR);
       $query->bindParam(":surname", $surname, PDO::PARAM_STR);
       $query->bindParam(":otchestvo", $otchestvo, PDO::PARAM_STR);
@@ -65,12 +65,41 @@
       $result = $query->execute();
       if ($result) {
         echo "<script>sweet_true('sucess','Регистрация прошла успешно!');</script>";
+        $query = $connection->prepare("SELECT * FROM users WHERE email=:email");
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['user_id'] = $result['id_user'];
+        $_SESSION['name'] = $result['name'];
+        $_SESSION['email'] = $result['email'];
+        echo '<script>window.location = "index.php";</script>';
       } else {
         echo '<p class="error">Неверные данные!</p>';
       }
     }
   }
   ?>
+  <script src="js/sweetalert2.all.min.js"></script>
+<script>
+    function sweet_true(sw_icon, sw_title) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: sw_icon,
+        title: sw_title
+      })
+    }
+  </script>
 <div class="wrap-body">
 
 
@@ -97,6 +126,7 @@
 						<div class="bl"></div>
 					</div>
 					<p></p>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
           <form method="post" action="">
                     <span class="transparent-input-label" for="transparentInput">Почта:</span>
                     <input type="text" id="transparentInput" class="transparent-input" placeholder="nameemail@gmail.com" name="email" maxlength="255" required>

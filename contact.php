@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     
   
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
+	<link rel="stylesheet" href="css/zerogridlist.css">
+	<link rel="stylesheet" href="css/stylelist.css">
+	<link rel="stylesheet" href="css/menulist.css">
 	
 	
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

@@ -1,13 +1,16 @@
 <?php
+session_start();
+?>
+<?php
 	require_once ('config.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head> 
 	<meta charset="utf-8">
 	<title>Autorent</title>
-	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
-	<meta name="author" content="www.zerotheme.com">
+	<meta name="description" content="www.autorent.com">
+	<meta name="author" content="Andrey Arefev">
 	
     
 	
@@ -15,16 +18,14 @@
 	
 	
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-  
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/cards.css">
-	<link rel="stylesheet" href="css/login.css">
-	
+  	<link rel="stylesheet" href="css/zerogridlist.css">
+	<link rel="stylesheet" href="css/stylelist.css">
+	<link rel="stylesheet" href="css/menulist.css">
+	<link rel="stylesheet" href="css/cardslist.css">
+	<link rel="stylesheet" href="css/loginstyle.css">
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/popup.css">
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-	
 	<script src="js/jquery.min.js" type="text/javascript"></script>
 	<script src="js/script.js"></script>
 	<script src="js/up.js"></script>
@@ -32,6 +33,8 @@
 	
     
 </head>
+
+
 <body class="index-page">
 <div class="wrap-body">
 
@@ -42,7 +45,12 @@
 	  <li><a href="index.php"><span>Autorent</span></a></li>
 	   <li><a href="single.php"><span>About</span></a></li>
 	   <li class="last"><a href="contact.php"><span>Contact</span></a></li>
+	   <?php 
+	   if (!$_SESSION) include('accountPersonal.php')
+	   ?>
 	   <li><a href="login.php"><span>Login</span></a></li>
+
+
 	</ul>
 </div>
 <header id="header">
@@ -68,11 +76,8 @@
 	</div>
 </header>
 
-
 <section id="container">
-	
 	<div class="wrap-container">
-
 		<section class="content-box box-1">
 			<div class="">
 				<div class="row wrap-box">
@@ -113,33 +118,26 @@
 					</div>
 				</div>
 			</div>
-		</section>
-	
-		<section class="content-box box-2">
+</section>
+
+
+<section class="content-box box-2">
 			<div class="zerogrid">
 				<div class="row wrap-box">
 					<div class="column sm-1-2">
-
-
-
 						<div class="block">
-	<div class="block-image">
-		<img src="images/about.png">
-	</div>
-	<div class="block-text">
-		Как проходит аренда автомобиля
-	</div>
-</div>
-
-
-
-
-					</div>
+							<div class="block-image">
+								<img src="images/about.png">
+							</div>
+									<div class="block-text">
+										Как проходит аренда автомобиля
+									</div>
+  						  	</div>
+						</div>
 					<div class="column sm-1-2">
-						<div class="wrap-col">
-							<H2>Как арендовать автомобиль?</H2>
-							<p>
-								тексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттекст
+				<div class="wrap-col">
+										<H2>Как арендовать автомобиль?</H2>
+							<p>тексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттекст
 тексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттекстте
 тексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттекстте
 тексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттексттекст</p>
@@ -147,7 +145,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+</section>
 		
 		
 		
@@ -159,7 +157,6 @@
 					<div class="header">
 						<h2>Наш автопарк</h2>
 					</div>
-<!-- Сетка карточек товаров -->
 <div class="cards">
 	<?php
 		$cards = $connection->prepare('SELECT * FROM autopark');
@@ -200,18 +197,20 @@
 					<br>
 				</a>
 				<!-- Кнопка добавить в корзину -->
-				<button class="card__add" id_card="'. $cards[$i]['id_auto'] .'">Арендовать</button>
+				<form action="rent.php">
+				<button type="submit" id="open-modal-btn" class="card__add" >Арендовать</button>
+				</form>
 				</div>
 			</div>
 			';
 		}
+		
 	?>
 
   </div>
 				</div>
 			</div>
-		</section>
-		
+</section>
 		
 		<section class="content-box box-6 box-style-3">
 			<div class="zerogrid">
@@ -278,8 +277,6 @@
 		<ul class="menu">
 			<li><a href="#">Home</a></li>
 			<li><a href="#">About</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">Team</a></li>
 			<li><a href="#">Contact</a></li>
 		</ul>
 		<p>©2023 AutoRent | All Rights Reserved</p>

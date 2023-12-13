@@ -1,32 +1,18 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html lang="ru">
 <head>
 
    
 	<meta charset="utf-8">
-	<title>Auorent</title>
-	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
-	<meta name="author" content="www.zerotheme.com">
-	
-    
-	
-    
-	
-	
+	<title>Login</title>
+	<meta name="description" content="www.autorent.com">
+	<meta name="author" content="Andrey Arefev">
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-  
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/login.css">
-	
-	
+	<link rel="stylesheet" href="css/zerogridlist.css">
+	<link rel="stylesheet" href="css/stylelist.css">
+	<link rel="stylesheet" href="css/menulist.css">
+	<link rel="stylesheet" href="css/loginstyle.css">
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-	
 	<script src="js/jquery.min.js" type="text/javascript"></script>
 	<script src="js/script.js"></script>
 
@@ -34,6 +20,9 @@
     
 </head>
 <body class="index-page">
+
+	<!--Код для подключения к БД, выборка пароля и почты--->
+
 <?php
     session_start();
     include('config.php');
@@ -45,28 +34,43 @@
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if (!$result) {
-            echo '<p class="error">Неверные пароль или почта!</p>';
-        } else {
-            if (password_verify($password, $result['password'])) {
-                $_SESSION['id_user'] = $result['id'];
-                echo '<p class="success">Поздравляем, вы прошли авторизацию!</p>';
-            } else {
-                echo '<p class="error"> Неверные пароль или почта!</p>';
-            }
-        }
-    }
+			echo "<script>sweet_true('error','Неверные почта или пароль');console.log('1');</script>";;
+		  } else {
+			if (password_verify($password, $result['password'])) {
+			  $_SESSION['user_id'] = $result['id_user'];
+			  $_SESSION['name'] = $result['name'];
+			  $_SESSION['alogin'] = $result['alogin'];
+			  $_SESSION['email'] = $result['email'];
+			  switch ($_SESSION['accountlvl']) {
+				case 0:
+				  $redirect_url = "/accountPersonal.php";
+				  break;
+				case 1:
+				  $redirect_url = "/alogin.php";
+				  break;
+				default:
+				  $redirect_url = "/accountPersonal.php";
+			  }
+			  echo "<script>window.location =  \"$redirect_url \";</script>";
+			} else {
+			  echo "<script>sweet_true('error','Неверные данные!');</script>";
+			}
+		  }
+		}
 ?>
+
+<!---Верстка формы логина--->
+
 <div class="wrap-body">
-<div id="cssmenu" >
-	<ul>
-	  <li><a href="index.php"><span>Autorent</span></a></li>
-	   <li><a href="single.php"><span>About</span></a></li>
-	   <li class="last"><a href="contact.php"><span>Contact</span></a></li>
-	</ul>
-</div>
+		<div id="cssmenu" >
+			<ul>
+	  			<li><a href="index.php"><span>Autorent</span></a></li>
+	   			<li><a href="single.php"><span>About</span></a></li>
+	   			<li class="last"><a href="contact.php"><span>Contact</span></a></li>
+			</ul>
+		</div>
 <header id="header">
 	<div class="wrap-header" >
-		<!---Main Header--->
 		<div class="main-header">
 			<div class="zerogrid">
 				<div class="row">
@@ -77,11 +81,13 @@
 						<div class="br"></div>
 						<div class="bl"></div>
 					</div>
-					<label class="transparent-input-label" for="transparentInput">Введите почту:</label>
-					<input type="text" id="transparentInput" class="transparent-input" name="email" required>
-					<label class="transparent-input-label" for="transparentInput">Введите пароль:</label>
-					<input type="password" id="transparentInput" class="transparent-input" name="password" required>
-					<button class="login-button"><a class="login-done" href="single.html" name="login" value="login"><span>Войти</span></button>
+					<form method="post">
+						<label class="transparent-input-label" for="transparentInput">Введите почту:</label>
+						<input type="text" id="transparentInput" class="transparent-input" name="email" required>
+						<label class="transparent-input-label" for="transparentInput">Введите пароль:</label>
+						<input type="password" id="transparentInput" class="transparent-input" name="password" required>
+						<button type="submit" class="login-button" name="login" value="login">Войти</button>
+					</from>
 				    <p></p>
 					<a href="registration.php"><span class="login-reg">Зарегистрироваться</span></a>
 				</div>
@@ -89,6 +95,9 @@
 		</div>
 	</div>
 </header>
+
+<!---Верстка подвала сайта--->
+
 <footer>
 		<div class="waves">
 			<div class="wave" id="wave1"></div>

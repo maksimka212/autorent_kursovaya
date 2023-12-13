@@ -10,12 +10,24 @@ input.transparent-input {
     width: 40%;
     margin-right: auto;
     margin-left: auto;
-    overflow: scroll
-    
+  }
+  input.transparent-inputDate{
+    border: 4px double white;
+    outline: none;
+    background: transparent;
+    border-bottom: 4px double white; /* Линия под полем ввода */
+    color: white; /* Цвет текста */
+    box-sizing: border-box;
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    color-scheme: dark;
+    display: inline-block;
   }
   span.transparent-input-label {
   color:#ed6427;
   font-family: 'Poppins', sans-serif;
+  position: relative;
   }
 
   .login-done{
