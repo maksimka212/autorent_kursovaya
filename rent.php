@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru"> 
-
-   
-	<meta charset="utf-8">
-	<title>Аренда</title>
-	<meta name="description">
-	<meta name="author">
+ 
+	  <meta charset="utf-8">
+	  <title>Аренда</title>
+	  <meta name="description">
+	  <meta name="author">
 	
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
@@ -13,13 +12,10 @@
 	  <link rel="stylesheet" href="css/stylelist.css">
 	  <link rel="stylesheet" href="css/menulist.css">
 	  <link rel="stylesheet" href="css/loginstyle.css">
-	
-	
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-	
-	<script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/script.js"></script>
+	  <script src="js/jquery.min.js" type="text/javascript"></script>
+	  <script src="js/script.js"></script>
 
 	
     
@@ -82,10 +78,10 @@
                     <input type="date" id="transparentInput" class="transparent-inputDate" name="date_do"><br>
                     <span class="transparent-input-label" for="transparentInput">Cумма аренды:</span>
                     <input type="text" id="transparentInput" class="transparent-input" name="summa" disabled>
-                    
                     <p></p>
                     <button type="submit" class="login-button" name="rent" value="rent">Арендовать</button>
 						<p></p>
+            <a href="index.php"><span class="login-reg">Назад</span></a>
            </form>
             
 				</div>

@@ -37,16 +37,20 @@
 			echo "<script>sweet_true('error','Неверные почта или пароль');console.log('1');</script>";;
 		  } else {
 			if (password_verify($password, $result['password'])) {
-			  $_SESSION['user_id'] = $result['id_user'];
+			  $_SESSION['id_user'] = $result['id_user'];
 			  $_SESSION['name'] = $result['name'];
+			  $_SESSION['surname'] = $result['surname'];
+			  $_SESSION['otchestvo'] = $result['otchestvo'];
 			  $_SESSION['alogin'] = $result['alogin'];
 			  $_SESSION['email'] = $result['email'];
-			  switch ($_SESSION['accountlvl']) {
+			  $_SESSION['passport'] = $result['passport'];
+			  $_SESSION['vodudost'] = $result['vodudost'];
+			  switch ($_SESSION['alogin']) {
 				case 0:
 				  $redirect_url = "/accountPersonal.php";
 				  break;
 				case 1:
-				  $redirect_url = "/alogin.php";
+				  $redirect_url = "/index.php";
 				  break;
 				default:
 				  $redirect_url = "/accountPersonal.php";

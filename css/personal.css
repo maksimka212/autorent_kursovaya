@@ -1,0 +1,26 @@
+header#header .main-header{
+    background: url(../images/hero.jpg);
+    background-size: cover;
+    overflow: hidden;
+    padding: 500px;
+    position: relative;
+}
+header .main-header:before{
+    position: absolute;
+    content: ""; 
+    height: 100%; 
+    width: 100%;
+    background: rgba(0, 0, 0, .55);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.conteiner-main{
+    width: 20%;
+    background-color: #f2f2f2;
+    position: absolute;
+    left: 30px;
+    height: 25%;
+    margin-top: 30px;
+  }

@@ -54,7 +54,7 @@
     if ($query->rowCount() > 0) {
       echo "<script>sweet_true('error','такая почта уже зарегистрирована!');</script>";
     } if ($query->rowCount() == 0) {
-      $query = $connection->prepare("INSERT INTO users(email,name,surname,otchestvo,passport,vodudost,password) VALUES (:email,:name,:surname,:otchestvo,:passport,:vodudost,:password_hash)");
+      $query = $connection->prepare("INSERT INTO users(name,surname,otchestvo,email,passport,vodudost,password) VALUES (:name,:surname,:otchestvo,:email,:passport,:vodudost,:password_hash)");
       $query->bindParam(":name", $name, PDO::PARAM_STR);
       $query->bindParam(":surname", $surname, PDO::PARAM_STR);
       $query->bindParam(":otchestvo", $otchestvo, PDO::PARAM_STR);
@@ -69,7 +69,7 @@
         $query->bindParam("email", $email, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['user_id'] = $result['id_user'];
+        $_SESSION['id_user'] = $result['id_user'];
         $_SESSION['name'] = $result['name'];
         $_SESSION['email'] = $result['email'];
         echo '<script>window.location = "index.php";</script>';
