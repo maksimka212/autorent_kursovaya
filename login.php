@@ -1,3 +1,9 @@
+<?php
+session_start();
+?>
+<?php
+	require_once ('config.php');
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -62,6 +68,28 @@
 		  }
 		}
 ?>
+
+<script src="js/sweetalert2.all.min.js"></script>
+<script>
+    function sweet_true(sw_icon, sw_title) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: sw_icon,
+        title: sw_title
+      })
+    }
+</script>
 
 <!---Верстка формы логина--->
 

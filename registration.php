@@ -1,13 +1,16 @@
+<?php
+session_start();
+?>
+<?php
+	require_once ('config.php');
+?>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+<html lang="ru">
 <head>
 
    
 	<meta charset="utf-8">
-	<title>Autorent</title>
+	<title>Регистрация</title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
 	
@@ -74,7 +77,7 @@
         $_SESSION['email'] = $result['email'];
         echo '<script>window.location = "index.php";</script>';
       } else {
-        echo '<p class="error">Неверные данные!</p>';
+        echo "<script>sweet_true('sucess','Неверный данные!');</script>";
       }
     }
   }
@@ -86,7 +89,7 @@
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 5000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -99,7 +102,7 @@
         title: sw_title
       })
     }
-  </script>
+</script>
 <div class="wrap-body">
 
 

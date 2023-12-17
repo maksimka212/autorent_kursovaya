@@ -5,16 +5,16 @@ session_start();
 	require_once ('config.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 
    
   
 	<meta charset="utf-8">
-	<title>Autorent</title>
-	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
-	<meta name="author" content="www.zerotheme.com">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Контакт</title>
+	<meta name="description">
+	<meta name="author">
+	<meta name="viewport">
  
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/zerogridlist.css">
@@ -35,8 +35,8 @@ session_start();
 <div id="cssmenu" >
 	<ul>
 	   <li><a href="index.php"><span>Autorent</span></a></li>
-	   <li><a href="single.php"><span>About</span></a></li>
-	   <li class="active"><a href="contact.php"><span>Contact</span></a></li>
+	   <li><a href="single.php"><span>О нас</span></a></li>
+	   <li class="active"><a href="contact.php"><span>Контакт</span></a></li>
 	   <li>
 	   		<?php 
 	  		 if (!isset($_SESSION['id_user'])) {

@@ -1,24 +1,31 @@
+<?php
+session_start();
+?>
+<?php
+	require_once ('config.php');
+?>
 <!DOCTYPE html>
 <html lang="ru"> 
  
-	  <meta charset="utf-8">
-	  <title>Аренда</title>
-	  <meta name="description">
-	  <meta name="author">
-	
+	<meta charset="utf-8">
+	<title>Аренда</title>
+	<meta name="description">
+	<meta name="author">
+
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
   	<link rel="stylesheet" href="css/zerogridlist.css">
-	  <link rel="stylesheet" href="css/stylelist.css">
-	  <link rel="stylesheet" href="css/menulist.css">
-	  <link rel="stylesheet" href="css/loginstyle.css">
-	  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/stylelist.css">
+	<link rel="stylesheet" href="css/menulist.css">
+	<link rel="stylesheet" href="css/loginstyle.css">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-	  <script src="js/jquery.min.js" type="text/javascript"></script>
-	  <script src="js/script.js"></script>
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.js"></script>
+	<script src="js/script.js"></script>
 
-	
-    
 </head>
 <body class="index-page">
 
@@ -42,16 +49,25 @@
         title: sw_title
       })
     }
-  </script>
+</script>
+
+<?php include('assets/scripts/datapicker.php')?>
+   
 <div class="wrap-body">
-
-
-
 <div id="cssmenu" >
 	<ul>
 	  <li><a href="index.php"><span>Autorent</span></a></li>
 	   <li><a href="single.php"><span>О нас</span></a></li>
 	   <li class="last"><a href="contact.php"><span>Контакт</span></a></li>
+     <li>
+	   		<?php 
+	  		 if (!isset($_SESSION['id_user'])) {
+		   	 echo '<a href="login.php"><span>Login</span></a>';
+			 } else {
+			 echo '<a href="accountPersonal.php"><span>Личный кабинет</span></a>';
+			 }
+		     ?>
+		</li>
 	</ul>
 </div>
 <header id="header">
@@ -68,21 +84,18 @@
 						<div class="bl"></div>
 					</div>
 					<p></p>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-          <form method="post" action="">
 
-                    <span class="transparent-input-label" for="transparentInput">Автомобиль:</span>
-                    <input type="text" id="transparentInput" class="transparent-input" name="auto" disabled>
+          		<form method="post" action="">
+                    <span class="transparent-input-label" for="transparentInput">Автомобиль: 
+                    <input type="text" id="transparentInput" class="transparent-input" name="auto" value="" placeholder="<?php echo $_GET['brend']; ?>" disabled>
                     <span class="transparent-input-label" for="transparentInput">Дата аренды:</span><br>
-                    <input type="date" id="transparentInput" class="transparent-inputDate" name="date_ot">
-                    <input type="date" id="transparentInput" class="transparent-inputDate" name="date_do"><br>
+                    <input type="date" id="txt-appoint_date_from" class="transparent-inputDate" name="date_from">
+                    <input type="date" id="txt-appoint_date_before" class="transparent-inputDate" name="date_before"><br>
                     <span class="transparent-input-label" for="transparentInput">Cумма аренды:</span>
-                    <input type="text" id="transparentInput" class="transparent-input" name="summa" disabled>
-                    <p></p>
+                    <p><input type="text" id="transparentInput" class="transparent-input" name="summa" disabled></p>
                     <button type="submit" class="login-button" name="rent" value="rent">Арендовать</button>
-						<p></p>
-            <a href="index.php"><span class="login-reg">Назад</span></a>
-           </form>
+					<p><a href="index.php"><span class="login-reg">Назад</span></a></p>
+           		</form>
             
 				</div>
 			</div>

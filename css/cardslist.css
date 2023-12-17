@@ -120,10 +120,10 @@
   width: 100%;
   font-weight: 400;
   font-size: 17px;
-  color: #70c05b;
+  color: #ff6633;
   padding: 10px;
   text-align: center;
-  border: 1px solid #70c05b;
+  border: 1px solid #ff6633;
   border-radius: 4px;
   cursor: pointer; /* Меняем курсор при наведении */
   transition: 0.2s;
@@ -156,3 +156,4 @@
   font-size: 150px;
   color: #ff6633;
 }
+

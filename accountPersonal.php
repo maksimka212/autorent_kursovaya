@@ -11,7 +11,7 @@ if (!$_SESSION['id_user'])
 
    
 	<meta charset="utf-8">
-	<title>Autorent</title>
+	<title><? echo $_SESSION['name']?></title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
 
@@ -50,25 +50,45 @@ if (!$_SESSION['id_user'])
 
 	<section>
 		<div class="main-header">
+		
 		<div class="body-container">
+		
 			<div class="container-left-menu">
-				<span class="personal-data">Личные данные</span>
+			
 				<form method="post">
-				<button type="submit" class="redact-button" name="redactor">Редактировать</button>
+					<span class="personal-data">Личные данные</span>
+					<div class="user-info">
+					<p id="name_redact_profil"><?= $_SESSION['name'] ?></p>
+					</div>
+					<div class="user-info">
+					<p id="surname_redact_profil"><?= $_SESSION['surname'] ?></p>
+					</div>
+					<div class="user-info">
+					<p id="otchestvo_redact_profil"><?= $_SESSION['otchestvo'] ?></p>
+					</div>
+					<div class="user-info">
+					<p id="email_redact_profil"><?= $_SESSION['email'] ?></p>
+					</div>
+					<div class="div_redact_profil">
+					<button id="redact_profil" onclick="replace();" class="redact-button">Редактировать</button>
+					</div>
 				</form>
 			</div>
+		
 			<div class="container-right">
-				<span class="personal-data-auto">Мои заказы</span>
+				<form method="post">
+			<span class="personal-data-auto">Мои заказы</span>
+				</form>
 			</div>
 
 		</div>
 		</div>
 	</section>
-
-
-
-
-
+	<script type="text/javascript" src="js/JsBarcode.all.min.js"></script>
+	<script type="text/javascript" src="js/function.js"></script>
+    <script>
+        JsBarcode(".barcode").init();
+    </script>
 
 </header>
 </body>

@@ -6,14 +6,22 @@
 					</div>
 <div class="cards">
 	<?php
-		$cards = $connection->prepare('SELECT * FROM autopark');
+	/*запрос релизован на то, чтобы брать занчения из связанных таблиц, выводится не id других таблиц, а значения*/ 
+		$cards = $connection->prepare('SELECT autopark.*, all_class.class, brends.brend, models.model, fuels.fuel, transmissions.transmission, kuzovs.kuzov, colors.color
+		FROM autopark 
+		LEFT JOIN all_class ON autopark.id_class = all_class.id_class 
+		LEFT JOIN brends ON autopark.id_brend = brends.id_brend 
+		LEFT JOIN models ON autopark.id_model = models.id_models 
+		LEFT JOIN fuels ON autopark.id_fuel = fuels.id_fuel 
+		LEFT JOIN transmissions ON autopark.id_trans = transmissions.id_trans
+		LEFT JOIN kuzovs ON autopark.id_kuzov = kuzovs.id_kuzov 
+		LEFT JOIN colors ON autopark.id_color = colors.id_color');
 		$cards->execute();
 		$cards = $cards->fetchAll(PDO::FETCH_ASSOC);
-
 		for ($i=0; $i < count($cards); $i++) { 
 			echo '
 			<div class="card">
-			<span class="class_auto">'. $cards[$i]['id_class'] .'</span>
+			<span class="class_auto">'. $cards[$i]['class'] .'</span>
 				<!-- Верхняя часть -->
 				<div class="card__top">
 				<!-- Изображение-ссылка товара -->
@@ -24,7 +32,6 @@
 					/>
 				</a>
 				<!-- Скидка на товар -->
-				<div class="card__label">'. $cards[$i]['produced'] .'</div>
 				</div>
 				<!-- Нижняя часть -->
 				<div class="card__bottom">
@@ -34,26 +41,23 @@
 				</div>
 				<!-- Ссылка-название товара -->
 				<span class="card__title">Характеристики</span>
-				 	'. $cards[$i]['id_brend'] .'
-					'. $cards[$i]['id_model'] .'<br>
-					'. $cards[$i]['id_fuel'] .'<br>
-					'. $cards[$i]['id_trans'] .'<br>
-					'. $cards[$i]['id_kuzov'] .'<br>
-					'. $cards[$i]['engine'] .'<br>
-					'. $cards[$i]['id_color'] .'<br>
+				 <span name="get-model">Модель: '. $cards[$i]['brend'] .' '. $cards[$i]['model'] .'</span>				
+				 <span name="get-fuel">Топливо: '. $cards[$i]['fuel'] .'</span>
+				 <span name="get-trans">КПП: '. $cards[$i]['transmission'] .'</span>
+				 <span name="get-kuzov">Кузов: '. $cards[$i]['kuzov'] .'</span>
+				 <span name="get-engine">Мощность: '. $cards[$i]['engine'] .' л.с</span>
+				 <span name="get-color">Цвет: '. $cards[$i]['color'] .'</span>
 					<br>
 				</a>
 				<!-- Кнопка добавить в корзину -->
-				<form action="
+				<form method="post" action="
 				';
 				if (!isset($_SESSION['id_user'])) echo 'login';
-				else echo 'rent';
-				echo '
-				.php">
-				<button type="submit" id="open-modal-btn" class="card__add" >Арендовать</button>
+				else echo 'rent.php?id='. $cards[$i]['id_auto'] .'?brend='. $cards[$i]['brend'] .'?model='. $cards[$i]['model'] .'?cena='. $cards[$i]['cena'] .'">;
+				<button type="submit" id="openModal" class="card__add" name="id='. $cards[$i]['id_auto'] .'?brend='. $cards[$i]['brend'] .'?model='. $cards[$i]['model'] .'?cena='. $cards[$i]['cena'] .'">Арендовать</button>
 				</form>
 				</div>
-			</div>
+				</div>
 			';
 		}
 		if (isset($_SESSION['alogin'])) {
@@ -62,11 +66,8 @@
 			</div></a>
 			';
 		}
-		
 	?>
-  </div>
 
-  
 				</div>
 			</div>
 </section>

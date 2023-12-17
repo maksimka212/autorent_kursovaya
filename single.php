@@ -5,14 +5,14 @@ session_start();
 	require_once ('config.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 
   
 	<meta charset="utf-8">
-	<title>Autorent</title>
-	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
-	<meta name="author" content="www.zerotheme.com">
+	<title>О нас</title>
+	<meta name="description">
+	<meta name="author">
 
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/zerogridlist.css">
@@ -35,8 +35,8 @@ session_start();
 <div id="cssmenu" >
 	<ul>
 	   <li><a href="index.php"><span>Autorent</span></a></li>
-	   <li class="active"><a href="single.php"><span>About</span></a></li>
-	   <li class="last"><a href="contact.php"><span>Contact</span></a></li>
+	   <li class="active"><a href="single.php"><span>О нас</span></a></li>
+	   <li class="last"><a href="contact.php"><span>Контакты</span></a></li>
 	   <li>
 	   		<?php 
 	  		 if (!isset($_SESSION['id_user'])) {
@@ -57,8 +57,8 @@ session_start();
 			<div class="row">
 				<div class="crumbs">
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="single.html">About</a></li>
+						<li><a href="index.php">Главная</a></li>
+						<li><a href="single.php">Контакты</a></li>
 					</ul>
 				</div>
 				<div id="main-content">
@@ -66,13 +66,12 @@ session_start();
 						<article>
 							<div class="art-header">
 								<div class="entry-title"> 
-									<h2>Autorent</h2>
+									<h2>Объединяем машины и людей</h2>
 								</div>
 								
 							</div>
 							<div class="art-content">
 								<div class="container_slider_css">
-  <img class="photo_slider_css" src="images/about.jpg" alt="">
   <img class="photo_slider_css" src="images/6.jpg" alt="">
   <img class="photo_slider_css" src="images/9.jpg" alt="">
   <img class="photo_slider_css" src="images/3.jpg" alt="">
@@ -81,13 +80,13 @@ session_start();
 
 
 
-								<div class="excerpt"><p>ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p></div>
-								<p>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
-								<blockquote><p>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p></blockquote>
+								<h2>История нашей компании</h2>
+								<p>Компания была основана в 2018 году из личной транспортной задачи основателей, решить которую удалось лишь найдя машину у знакомых чьих-то знакомых.</p>
+								<blockquote><p>За 5 лет работы, выявляя потребности пользователей и расширяя под них ассортимент, AutoRent стал маркетплейсом по аренде авто, предлагая пользователям, единожды зарегистрировавшись, всегда иметь качественный сервис и удобный интерфейс для самых разных кейсов.</p></blockquote>
 								
-								<h2>Atorent</h2><p>ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+								<blockquote><h2 >К чему мы стремимся?</h2><p>Автомобильная индустрия стоит на пороге самых значимых перемен с 1913 года. Что ее ждет и где окажется AutoRent</p></blockquote>
 
-								<p>ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+								<p>Массовое внедрение беспилотников и новых форм владения авто сотрет грань между сервисами, требущих от пользователя управлять авто и подразумевающих наличие водителя.</p>
 																
 							</div>
 						</article>
