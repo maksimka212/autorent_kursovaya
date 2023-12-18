@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 17 2023 г., 21:30
--- Версия сервера: 8.0.30
--- Версия PHP: 7.2.34
+-- Время создания: Дек 15 2023 г., 12:46
+-- Версия сервера: 8.0.24
+-- Версия PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,6 +58,7 @@ CREATE TABLE `autopark` (
   `engine` varchar(100) NOT NULL,
   `numb_engine` varchar(17) NOT NULL,
   `cena` varchar(100) NOT NULL,
+  `produced` varchar(100) NOT NULL,
   `id_color` int NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -66,10 +67,8 @@ CREATE TABLE `autopark` (
 -- Дамп данных таблицы `autopark`
 --
 
-INSERT INTO `autopark` (`id_auto`, `id_brend`, `id_model`, `id_class`, `id_kuzov`, `id_fuel`, `id_trans`, `engine`, `numb_engine`, `cena`, `id_color`, `image`) VALUES
-(1, 1, 1, 2, 1, 2, 1, '120', '1d454d78rt45d124d', '3000', 3, 'images/auto1.png'),
-(2, 2, 2, 1, 1, 2, 3, '98', 'ffqwr4548544ee333', '1200', 6, 'images/auto1.png'),
-(3, 3, 3, 3, 3, 4, 3, '250', 'safasf4654as6a5s4', '4500', 4, 'images/auto1.png');
+INSERT INTO `autopark` (`id_auto`, `id_brend`, `id_model`, `id_class`, `id_kuzov`, `id_fuel`, `id_trans`, `engine`, `numb_engine`, `cena`, `produced`, `id_color`, `image`) VALUES
+(1, 1, 1, 2, 1, 2, 1, '120 л.с', '1d454d78rt45d124d', '3000', 'EN', 3, 'images/auto1.png');
 
 -- --------------------------------------------------------
 
@@ -89,15 +88,7 @@ CREATE TABLE `brends` (
 INSERT INTO `brends` (`id_brend`, `brend`) VALUES
 (1, 'Audi'),
 (2, 'Reno'),
-(3, 'BMW'),
-(4, 'Mersedes-Benz'),
-(5, 'Honda'),
-(6, 'Subaru'),
-(7, 'Porshe'),
-(8, 'Volvo'),
-(9, 'Ford'),
-(10, 'Nissan'),
-(11, 'Toyota');
+(3, 'BMW');
 
 -- --------------------------------------------------------
 
@@ -117,13 +108,7 @@ CREATE TABLE `colors` (
 INSERT INTO `colors` (`id_color`, `color`) VALUES
 (1, 'Черный'),
 (2, 'Белый'),
-(3, 'Красный'),
-(4, 'Синий'),
-(5, 'Фиолетовый'),
-(6, 'Серый'),
-(7, 'Розовый'),
-(8, 'Орнажевый'),
-(9, 'Зеленый');
+(3, 'Красный');
 
 -- --------------------------------------------------------
 
@@ -158,8 +143,7 @@ CREATE TABLE `fuels` (
 INSERT INTO `fuels` (`id_fuel`, `fuel`) VALUES
 (1, 'ДТ'),
 (2, '95'),
-(3, '92'),
-(4, '100');
+(3, '92');
 
 -- --------------------------------------------------------
 
@@ -179,11 +163,7 @@ CREATE TABLE `kuzovs` (
 INSERT INTO `kuzovs` (`id_kuzov`, `kuzov`) VALUES
 (1, 'Седан'),
 (2, 'Универсал'),
-(3, 'Хэтч-бэк'),
-(4, 'Купе'),
-(5, 'Кабриолет'),
-(6, 'Пикап'),
-(7, 'Минивэн');
+(3, 'Хэтч-бэк');
 
 -- --------------------------------------------------------
 
@@ -340,19 +320,19 @@ ALTER TABLE `all_class`
 -- AUTO_INCREMENT для таблицы `autopark`
 --
 ALTER TABLE `autopark`
-  MODIFY `id_auto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_auto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `brends`
 --
 ALTER TABLE `brends`
-  MODIFY `id_brend` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_brend` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id_color` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_color` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `contract`
@@ -364,13 +344,13 @@ ALTER TABLE `contract`
 -- AUTO_INCREMENT для таблицы `fuels`
 --
 ALTER TABLE `fuels`
-  MODIFY `id_fuel` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_fuel` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `kuzovs`
 --
 ALTER TABLE `kuzovs`
-  MODIFY `id_kuzov` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_kuzov` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `models`
@@ -405,6 +385,13 @@ ALTER TABLE `autopark`
   ADD CONSTRAINT `autopark_ibfk_5` FOREIGN KEY (`id_kuzov`) REFERENCES `kuzovs` (`id_kuzov`) ON DELETE RESTRICT ON UPDATE CASCADE,
   ADD CONSTRAINT `autopark_ibfk_6` FOREIGN KEY (`id_model`) REFERENCES `models` (`id_models`) ON DELETE RESTRICT ON UPDATE CASCADE,
   ADD CONSTRAINT `autopark_ibfk_7` FOREIGN KEY (`id_trans`) REFERENCES `transmissions` (`id_trans`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `contract`
+--
+ALTER TABLE `contract`
+  ADD CONSTRAINT `contract_ibfk_1` FOREIGN KEY (`id_auto`) REFERENCES `autopark` (`id_auto`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  ADD CONSTRAINT `contract_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

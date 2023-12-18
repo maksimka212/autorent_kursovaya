@@ -159,3 +159,5 @@ footer p {
     margin-top: 15px;
     font-size: 1.1em;
 }
+
+.transparent-input::placeholder {color: white;}

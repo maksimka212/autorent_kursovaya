@@ -48,17 +48,14 @@
 				 <span name="get-engine">Мощность: '. $cards[$i]['engine'] .' л.с</span>
 				 <span name="get-color">Цвет: '. $cards[$i]['color'] .'</span>
 					<br>
-				</a>
-				<!-- Кнопка добавить в корзину -->
-				<form method="post" action="
+					</a>
+					<!-- Кнопка добавить в корзину -->
+					<form method="get" action="">
+					<a class="card__add" href="rent.php?brend='. $cards[$i]['brend'] .'&model='. $cards[$i]['model'] .'&id_auto='. $cards[$i]['id_auto'] .'&cena='. $cards[$i]['cena'] .'"><input type="hidden" id="open-modal-btn">Арендовать</input></a>
+					</form>
+					</div>
+				</div>
 				';
-				if (!isset($_SESSION['id_user'])) echo 'login';
-				else echo 'rent.php?id='. $cards[$i]['id_auto'] .'?brend='. $cards[$i]['brend'] .'?model='. $cards[$i]['model'] .'?cena='. $cards[$i]['cena'] .'">;
-				<button type="submit" id="openModal" class="card__add" name="id='. $cards[$i]['id_auto'] .'?brend='. $cards[$i]['brend'] .'?model='. $cards[$i]['model'] .'?cena='. $cards[$i]['cena'] .'">Арендовать</button>
-				</form>
-				</div>
-				</div>
-			';
 		}
 		if (isset($_SESSION['alogin'])) {
 			echo '<a href="addautolist.php"><div class="card">

@@ -84,15 +84,16 @@ session_start();
 						<div class="bl"></div>
 					</div>
 					<p></p>
-
           		<form method="post" action="">
-                    <span class="transparent-input-label" for="transparentInput">Автомобиль: 
-                    <input type="text" id="transparentInput" class="transparent-input" name="auto" value="" placeholder="<?php echo $_GET['brend']; ?>" disabled>
+                    <span class="transparent-input-label" for="transparentInput">Автомобиль:</span>
+                    <input type="text" id="transparentInput" class="transparent-input" name="id_auto" value="<?php echo $_GET['brend']; ?>&ensp;<?php echo $_GET['model']; ?>" disabled>
+					<span class="transparent-input-label" for="transparentInput">Сумма аренды в сутки:</span>
+                    <input type="text" id="transparentInput" class="transparent-input" name="summa" value="<?php echo $_GET['cena']; ?>" disabled>
                     <span class="transparent-input-label" for="transparentInput">Дата аренды:</span><br>
                     <input type="date" id="txt-appoint_date_from" class="transparent-inputDate" name="date_from">
                     <input type="date" id="txt-appoint_date_before" class="transparent-inputDate" name="date_before"><br>
                     <span class="transparent-input-label" for="transparentInput">Cумма аренды:</span>
-                    <p><input type="text" id="transparentInput" class="transparent-input" name="summa" disabled></p>
+                    <p><input type="text" id="transparentInputCount" class="transparent-input" name="summa" value="" disabled></p>
                     <button type="submit" class="login-button" name="rent" value="rent">Арендовать</button>
 					<p><a href="index.php"><span class="login-reg">Назад</span></a></p>
            		</form>

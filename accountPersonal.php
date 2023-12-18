@@ -15,12 +15,13 @@ if (!$_SESSION['id_user'])
 	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
 
-    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
   	<link rel="stylesheet" href="css/zerogridlist.css">
-	  <link rel="stylesheet" href="css/stylelist.css">
-	  <link rel="stylesheet" href="css/menulist.css">
-	  <link rel="stylesheet" href="css/loginstyle.css">
+	<link rel="stylesheet" href="css/stylelist.css">
+	<link rel="stylesheet" href="css/menulist.css">
+	<link rel="stylesheet" href="css/loginstyle.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
 	<link rel="stylesheet" href="css/okno.css">
 	<link rel="stylesheet" href="css/cardslist.css">
@@ -55,7 +56,7 @@ if (!$_SESSION['id_user'])
 		
 			<div class="container-left-menu">
 			
-				<form method="post">
+				<form action="" method="post">
 					<span class="personal-data">Личные данные</span>
 					<div class="user-info">
 					<p id="name_redact_profil"><?= $_SESSION['name'] ?></p>

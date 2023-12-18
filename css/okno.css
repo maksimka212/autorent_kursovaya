@@ -23,8 +23,10 @@ body {
     box-shadow: rgba(0, 0, 0, 0.2) 0 4px 2px -2px;
     margin: left;
     display: flex;
+    flex-direction: column; /* Размещаем элементы в колонку */
     border: 4px double white;
-    justify-content: center;
+    transition: 0.2s;
+    position: relative;
 }
 
 .container-right {
@@ -38,17 +40,18 @@ body {
     border: 4px  double white;
 }
 .redact-button {
-    position: relative;
-    display: flex;
-    background-color: #ed6427;
-    font-family: 'Poppins', sans-serif;
-    border: #ed6427;
-    color: aliceblue;
-    width: auto;
-    cursor: pointer;
-    padding: 5px;
-    margin-top: 18%;
-
+    display: block;
+    width: 90%;
+    font-weight: 400;
+    font-size: 17px;
+    color: white;
+    background: #ff6633;
+    text-align: center;
+    border: 1px solid #ff6633;
+    border-radius: 4px;
+    cursor: pointer; /* Меняем курсор при наведении */
+    margin-top: auto; /* Прижимаем кнопку к низу карточки */
+    margin-left: 5%;
   }
 .redact-button:hover{
   background: transparent;
@@ -61,6 +64,7 @@ span.personal-data {
     font-family: 'Poppins', sans-serif;
     position: relative;
     display: flex;
+    justify-content: center;
     margin-bottom: auto;
     text-align: center;
     margin-top: 10px;
@@ -82,8 +86,7 @@ span.personal-data-auto {
     justify-content: center;
     text-align: center;
     bottom: auto;
-    margin-top: 6%;
-
+    height: auto;
     
  }
  .logo-redact{
@@ -105,6 +108,14 @@ span.personal-data-auto {
    height: 60px;
 
  }
+ .input_redact{
+    height: auto;
+    background-color: transparent;
+    margin: auto;
+ }
+ #div_redact_profil {
+    display: flex;
+  }
 
 
 
