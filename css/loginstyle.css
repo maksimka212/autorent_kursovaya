@@ -24,7 +24,7 @@ input.transparent-input {
     color-scheme: dark;
     display: inline-block;
   }
-  
+
   input.transparent-input-prod{
     border: 4px double white;
     outline: none;

@@ -1,5 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-					<!--Отключение прошлой даты-->
+					<!--Отключение прошлой даты form-->
 					<script>
 					$(document).ready(function() { 
 					var dateToday = new Date();
@@ -17,7 +17,7 @@
 					$('#txt-appoint_date_from').attr('min', maxDate);
 					});
 					</script>
-					<!--Отключение прошлой даты-->
+					<!--Отключение прошлой даты before-->
 					<script>
 					$(document).ready(function() { 
 					var dateToday = new Date();
