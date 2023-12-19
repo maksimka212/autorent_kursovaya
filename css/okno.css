@@ -50,7 +50,7 @@ body {
     border: 1px solid #ff6633;
     border-radius: 4px;
     cursor: pointer; /* Меняем курсор при наведении */
-    margin-top: auto; /* Прижимаем кнопку к низу карточки */
+    margin-top: 140%; /* Прижимаем кнопку к низу карточки */
     margin-left: 5%;
   }
 .redact-button:hover{

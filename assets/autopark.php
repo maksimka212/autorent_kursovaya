@@ -6,7 +6,6 @@
 					</div>
 <div class="cards">
 	<?php
-	/*запрос релизован на то, чтобы брать занчения из связанных таблиц, выводится не id других таблиц, а значения*/ 
 		$cards = $connection->prepare('SELECT autopark.*, all_class.class, brends.brend, models.model, fuels.fuel, transmissions.transmission, kuzovs.kuzov, colors.color
 		FROM autopark 
 		LEFT JOIN all_class ON autopark.id_class = all_class.id_class 
@@ -22,24 +21,17 @@
 			echo '
 			<div class="card">
 			<span class="class_auto">'. $cards[$i]['class'] .'</span>
-				<!-- Верхняя часть -->
 				<div class="card__top">
-				<!-- Изображение-ссылка товара -->
 				<a href="#" class="card__image">
 					<img
 					src="'. $cards[$i]['image'] .'"
-					alt="Марка, модель"
-					/>
+					alt="Марка, модель"/>
 				</a>
-				<!-- Скидка на товар -->
 				</div>
-				<!-- Нижняя часть -->
 				<div class="card__bottom">
-				<!-- Цены на товар (с учетом скидки и без)-->
 				<div class="card__prices">
 					<div class="card__price card__price--common">&ensp;'. $cards[$i]['cena'] .'</div>
 				</div>
-				<!-- Ссылка-название товара -->
 				<span class="card__title">Характеристики</span>
 				 <span name="get-model">Модель: '. $cards[$i]['brend'] .' '. $cards[$i]['model'] .'</span>				
 				 <span name="get-fuel">Топливо: '. $cards[$i]['fuel'] .'</span>
@@ -49,7 +41,6 @@
 				 <span name="get-color">Цвет: '. $cards[$i]['color'] .'</span>
 					<br>
 					</a>
-					<!-- Кнопка добавить в корзину -->
 					<form method="get" action="">
 					<a class="card__add" href="rent.php?brend='. $cards[$i]['brend'] .'&model='. $cards[$i]['model'] .'&id_auto='. $cards[$i]['id_auto'] .'&cena='. $cards[$i]['cena'] .'"><input type="hidden" id="open-modal-btn">Арендовать</input></a>
 					</form>
@@ -64,7 +55,6 @@
 			';
 		}
 	?>
-
 				</div>
 			</div>
 </section>

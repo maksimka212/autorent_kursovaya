@@ -1,9 +1,6 @@
 <?php
 session_start();
 ?>
-<?php
-	require_once ('config.php');
-?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -29,45 +26,7 @@ session_start();
 
 	<!--Код для подключения к БД, выборка пароля и почты--->
 
-<?php
-    session_start();
-    include('config.php');
-    if (isset($_POST['login'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $query = $connection->prepare("SELECT * FROM users WHERE email=:email");
-        $query->bindParam("email", $email, PDO::PARAM_STR);
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        if (!$result) {
-			echo "<script>sweet_true('error','Неверные почта или пароль');console.log('1');</script>";;
-		  } else {
-			if (password_verify($password, $result['password'])) {
-			  $_SESSION['id_user'] = $result['id_user'];
-			  $_SESSION['name'] = $result['name'];
-			  $_SESSION['surname'] = $result['surname'];
-			  $_SESSION['otchestvo'] = $result['otchestvo'];
-			  $_SESSION['alogin'] = $result['alogin'];
-			  $_SESSION['email'] = $result['email'];
-			  $_SESSION['passport'] = $result['passport'];
-			  $_SESSION['vodudost'] = $result['vodudost'];
-			  switch ($_SESSION['alogin']) {
-				case 0:
-				  $redirect_url = "/accountPersonal.php";
-				  break;
-				case 1:
-				  $redirect_url = "/index.php";
-				  break;
-				default:
-				  $redirect_url = "/accountPersonal.php";
-			  }
-			  echo "<script>window.location =  \"$redirect_url \";</script>";
-			} else {
-			  echo "<script>sweet_true('error','Неверные данные!');</script>";
-			}
-		  }
-		}
-?>
+<?php include('assets/scripts/do_login.php') ?>
 
 <script src="js/sweetalert2.all.min.js"></script>
 <script>
@@ -91,7 +50,6 @@ session_start();
     }
 </script>
 
-<!---Верстка формы логина--->
 
 <div class="wrap-body">
 		<div id="cssmenu" >
@@ -128,27 +86,7 @@ session_start();
 	</div>
 </header>
 
-<!---Верстка подвала сайта--->
 
-<footer>
-		<div class="waves">
-			<div class="wave" id="wave1"></div>
-		</div>
-		<ul class="social">
-			<li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-			<li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
-			<li><a href="#"><ion-icon name="logo-linkedin"><ion-icon></a></li>
-			<li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
-		</ul>
-		<ul class="menu">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">Team</a></li>
-			<li><a href="#">Contact</a></li>
-		</ul>
-		<p>©2023 AutoRent | All Rights Reserved</p>
-	</footer>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

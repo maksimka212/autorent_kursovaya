@@ -75,11 +75,13 @@ if (!$_SESSION['id_user'])
 					</div>
 				</form>
 			</div>
-		
-			<div class="container-right">
-				<form method="post">
-			<span class="personal-data-auto">Мои заказы</span>
-				</form>
+			<div class="container-right">	
+			<span class="personal-data">Мои заказы</span>
+			<form action="" method="post">
+			<div class="contracts">
+            <div class="list-contract"></div>
+			</div>
+			</form>
 			</div>
 
 		</div>

@@ -1,9 +1,6 @@
 <?php
 session_start();
 ?>
-<?php
-	require_once ('config.php');
-?>
 <!DOCTYPE html>
 <html lang="ru"> 
  
@@ -70,8 +67,8 @@ session_start();
 		</li>
 	</ul>
 </div>
+<?php include('assets/scripts/do_rent.php') ?>
 <header id="header">
-    
 	<div class="wrap-header" >
 		<div class="main-header">
 			<div class="zerogrid">
@@ -87,19 +84,19 @@ session_start();
 					
           		<form method="post" action="">
                     <span class="transparent-input-label" for="transparentInput">Автомобиль:</span>
-                    <input type="text" id="transparentInput" class="transparent-input" name="id_auto" value="<?php echo $_GET['brend']; ?>&ensp;<?php echo $_GET['model']; ?>" disabled>
-					<span class="transparent-input-label" for="transparentInput">Сумма аренды в сутки:</span>
+                    <input type="text" id="transparentInput" class="transparent-input" name="model_auto" value="<?php echo $_GET['brend']; ?>&ensp;<?php echo $_GET['model']; ?>" disabled>
+					<span class="transparent-input-label" for="transparentInput">Сумма аренды:</span>
                     <input type="text" id="transparentInput" class="transparent-input" name="summa" value="<?php echo $_GET['cena']; ?>" disabled>
                     <span class="transparent-input-label" for="transparentInput">Дата аренды:</span><br>
-                    <input type="date" id="txt-appoint_date_from" class="transparent-inputDate" name="date_from">
-                    <input type="date" id="txt-appoint_date_before" class="transparent-inputDate" name="date_before"><br>
+                    <input type="date" id="txt-appoint_date_from" class="transparent-inputDate" name="date_from" required>
+                    <input type="date" id="txt-appoint_date_before" class="transparent-inputDate" name="date_before" required><br>
                     <button type="submit" class="login-button" name="rent" value="rent">Арендовать</button>
 					<p><a href="index.php"><span class="login-reg">Назад</span></a></p>
            		</form>
 				</div>
 			</div>
 		</div>
-        
+		
 	</div>
 </header>
 </body>
